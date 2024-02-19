@@ -17,6 +17,17 @@ form.addEventListener("submit", (e) => {
       score += 25;
     }
   });
+
+  window.scrollTo(0, 0);
   result.classList.remove("d-none");
-  result.querySelector("span").textContent = score + "%";
+  let output = 0;
+
+  const timer = setInterval(() => {
+    result.querySelector("span").textContent = output + "%";
+    if (output === score) {
+      clearInterval(timer);
+    } else {
+      output++;
+    }
+  }, 30);
 });
